@@ -15,6 +15,10 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+
+    "serve-favicon": "~2.3.0",
+    "twilio": "^2.5.2",
+
     "pusher": "^1.0.6",
     "serve-favicon": "~2.3.0"
   },
@@ -22,5 +26,6 @@
     "shot": "^2.0.1",
     "supertest": "^1.1.0",
     "tape": "^4.2.2"
+
   }
 }
