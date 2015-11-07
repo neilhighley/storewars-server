@@ -10,9 +10,9 @@ var TwilioApi=function(app){
 
     app.get('/testtwilio', function(req, res) {
     	client.messages.create({ 
-    		to: "+447768567715", 
-    		from: "+441992351777", 
-    		body: "Hello from Vlad's Twilio"
+    		to: "+number", 
+    		from: "+number", 
+    		body: "Hello from Twilio"
     	}, function(err, message) { 
     		console.log(message.sid); 
     	});
