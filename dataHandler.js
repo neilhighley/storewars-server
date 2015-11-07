@@ -1,12 +1,10 @@
 var events = [
     {
-        id: 1,
         lat: 1,
         long: 2,
         event: "zombies!"
     },
     {
-        id: 2,
         lat: 1000,
         long: 20,
         event: "cake!"
@@ -80,6 +78,7 @@ function getTeamFromUserId(userId) {
 
 function getUserById(id) {
     return users.filter(function(user) {
+        //console.log('in getUserById ', id, user.userId);
         return user.userId === id;
     })[0];
 }
@@ -90,16 +89,9 @@ function getAreaById(id) {
     })[0];
 }
 
-function getEventById(eventId) {
-    return events.filter(function(event) {
-        return event.id === eventId;
-    })[0];
-}
-
 module.exports = {
     viewNearbyEvents: viewNearbyEvents,
     registerUser: registerUser,
     claimEvent: claimEvent,
-    claimArea: claimArea,
-    getEventById: getEventById
+    claimArea: claimArea
 };

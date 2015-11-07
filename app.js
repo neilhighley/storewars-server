@@ -38,6 +38,14 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+var events = [
+  {
+    lat: 1,
+    long: 2,
+    event: "zombies!"
+  }
+];
+
 // error handlers
 
 // development error handler
