@@ -1,7 +1,7 @@
 var request = require('supertest');
 //var Shot = require('shot');
 var app = require('../app.js');
-
+var pusherHandler = require('../pusherHandler.js');
 
 //var app = require('../app.js');
 //
@@ -65,6 +65,7 @@ request(app).post('/claimEvent')
         if (err) console.log(err);
     });
 
+pusherHandler.testPush();
 
 //var req ={
 //        method: "GET",

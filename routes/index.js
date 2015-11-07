@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var ServerLibrary=require('../libraries/ServerLibrary.js');
-var dataHandler = require('../dataHandler.js');
+var dataHandler = require('../libraries/gameState.js');
 
 var router = express.Router();
 
@@ -20,6 +20,12 @@ router.post('/registerUser', function(req, res, next) {
 
   res.send(dataHandler.registerUser(userId, lat, long, userTeam));
 });
+
+router.post('/triggerTest', function(req, res, next) {
+  res.send(dataHandler.registerUser(userId, lat, long, userTeam));
+});
+
+
 
 router.post('/claimArea', function(req, res, next) {
   var areaId = req.body.areaId;
