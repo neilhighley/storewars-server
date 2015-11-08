@@ -1,6 +1,5 @@
 function gameState(eventEmmiter) {
 
-
     var happenings = [
         {
             id: 1,
@@ -164,16 +163,7 @@ function gameState(eventEmmiter) {
         })[0];
     }
 
-    //var eventHandler = function(triggerEvent) {
-    //    console.log(triggerEvent);
-    //    var eventType = triggerEvent.type;
-    //    if (eventType === 'areaCaptureEvent') {
-    //        areaCapturedEvent(triggerEvent, eventEmmiter);
-    //    }
-    //};
-
     return {
-        //viewNearbyEvents: viewNearbyEvents,
         registerUser: registerUser,
         claimEvent: claimEvent,
         claimArea: claimArea,

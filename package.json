@@ -16,7 +16,8 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "pusher": "^1.0.6",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "twilio": "^2.5.2"
   },
   "devDependencies": {
     "shot": "^2.0.1",
