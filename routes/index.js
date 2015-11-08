@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var ServerLibrary=require('./libraries/ServerLibrary.js');
-var dataHandler = require('./libraries/gameState.js');
+var ServerLibrary=require('libraries/ServerLibrary.js');
+var dataHandler = require('libraries/gameState.js');
 
 var router = express.Router();
 
@@ -16,7 +16,6 @@ router.post('/registerUser', function(req, res, next) {
   var long = req.body.long;
   var userId = req.body.userId;
   var userTeam = req.body.team;
-
 
   res.send(dataHandler.registerUser(userId, lat, long, userTeam));
 });
