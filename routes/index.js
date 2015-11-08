@@ -17,6 +17,7 @@ router.post('/registerUser', function(req, res, next) {
   var userId = req.body.userId;
   var userTeam = req.body.team;
 
+
   res.send(dataHandler.registerUser(userId, lat, long, userTeam));
 });
 
