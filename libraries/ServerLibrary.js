@@ -1,7 +1,7 @@
 var ServerLibrary=function(){
 
     this.GetStatus=function(){
-        var obj={title:"Storewars server", status:"ok"};
+        var obj={title:"Store Wars", status:"ok"};
 
         return obj;
 
