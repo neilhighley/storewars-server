@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+.jedi{
+  font-family:jediFont;
+}
+.jedilarge{
+  font-family:jediFont;
+  font-size:60px;
+}
+
+
+@font-face {
+  font-family: jediFont;
+  src: url(/fonts/Starjedi.ttf);
+}
