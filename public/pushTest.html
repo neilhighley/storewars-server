@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>pushTest</title>
+    </head>
+    <body>
+        <script>
+            var pusher = new Pusher(152839);
+
+            /*
+            Subscribe to the channel.
+            */
+            var channel = pusher.subscribe('StoreWars');
+
+            /*
+            Bind to the subscription success event and handle it with an inline function.
+            */
+            channel.bind('pusher:subscription_succeeded', function() {
+            console.log('Success!');
+            });
+
+            /*
+            Bind to the custom event, `my-event`, and handle with an inline function.
+            When the event is received an alert will be shown using the `.message` property of the incoming event payload.
+            */
+            channel.bind('areaevent', function(data) {
+                alert('A message has been received: ' + data.message);
+            });
+
+        </script>
+    </body>
+</html>
