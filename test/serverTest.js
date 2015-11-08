@@ -1,11 +1,14 @@
-
+var eventEmmiter = require('../libraries/EventEmitter.js');
 var app = require('../app.js');
 
 function fakeEvent(data) {
     console.log(data);
 }
 
-var gameState = require('../libraries/GameState.js')(fakeEvent);
+var gameState = require('../libraries/GameState.js')
+gameState.setEmmiter(eventEmmiter);
+// console.log(gameState.getOfflineUsers());
+
 
 var testEvents = [
     {
@@ -14,7 +17,8 @@ var testEvents = [
             userId: 1,
             lat: 11.3,
             long: 3.1,
-            team: 'blue'
+            team: 'blue',
+            name: 'eoin'
         }
     },
     {
@@ -35,3 +39,5 @@ var testEvents = [
 ].forEach(function(event) {
     gameState.eventHandler(event)
 });
+
+// console.log(gameState.getOfflineUsers());

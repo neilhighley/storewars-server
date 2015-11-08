@@ -4,7 +4,6 @@ var ServerLibrary=function(){
         var obj={title:"Storewars server", status:"ok"};
 
         return obj;
-
     }
 
 }
