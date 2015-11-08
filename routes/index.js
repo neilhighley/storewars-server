@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var ServerLibrary=require('./libraries/ServerLibrary.js');
-var dataHandler = require('./libraries/gameState.js');
+var ServerLibrary=require('../libraries/ServerLibrary.js');
+var dataHandler = require('../libraries/gameState.js');
 
 var router = express.Router();
 

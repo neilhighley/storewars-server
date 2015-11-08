@@ -9,10 +9,11 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var twilio = require('./libraries/TwilioApi.js');
+
 var app = express();
 
-app.listen (1337, function(){
-    console.log("ready on port 1337");
+app.listen (3000, function(){
+
 })
 
 // view engine setup
