@@ -33,7 +33,8 @@ var testEvents = [
         data: {
             userId: 1,
             areaId: 1,
-            name: 'starbucks'
+            name: 'starbucks',
+            team: 'blue'
         }
     }
 ].forEach(function(event) {

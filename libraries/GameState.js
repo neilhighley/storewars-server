@@ -1,22 +1,34 @@
 var env = require('env2')('./config.env');
 
 var eventEmmiter;
+
+var teams = [
+  'red',
+  'blue'
+];
+
+function getFirstOppositeTeam(team) {
+  return teams.filter(function(oppositeTeam) {
+    return oppositeTeam !== team;
+  })[0];
+}
+
 var registeredUsers = [
-{
+  {
     userId: 1,
     lat: 11.3,
     long: 3.1,
     team: 'blue',
     name: 'eoin'
-},
-{
+  },
+  {
     userId: 10,
     lat: 10.3,
     long: 3.12,
-    team: 'red',
+    team: 'blue',
     name: 'neil',
     number: process.env.NEIL_NUMBER
-}
+  }
 ];
 var happenings = [
   {
@@ -31,9 +43,13 @@ var happenings = [
   },
   {
       id: 2,
-      lat: 1000,
-      long: 20,
-      event: "cake!"
+      title: 'Retake starbucks',
+      flavour: 'The other team has captured the starbucks opposite Liverpool st. station. retake it and get your team 10% off coffie all day.',
+      lat: 1,
+      long: 2,
+      name: "starbucksRetake",
+      type: 'challenge',
+      willText: true
   }
 ];
 
@@ -41,7 +57,8 @@ var offers = [
   {
       id: 1,
       target: 'team',
-      description: "Team member completed capture starbucks. 10% off coffee",
+      title: '10% off coffee',
+      flavour: "Team member captured starbucks. 10% off coffee",
       name: 'starbucks',
       type: 'offer',
       willText: true
@@ -49,7 +66,8 @@ var offers = [
   {
       id: 2,
       target: 'user',
-      description: 'If you like coffee you\'ll love drones. Get ten pounds of at the argos opposite',
+      title: 'Discount on drones',
+      flavour: 'If you like coffee you\'ll love drones. Get ten pounds of at the argos opposite',
       name: 'drone',
       type: 'offer'
   }
@@ -78,6 +96,14 @@ var getOfflineUsers = function() {
   });
 }
 
+function checkTarget(target, user) {
+  if (target.type === 'team') {
+    return target.identifier === user.team;
+  } else {
+    return target.identifier === user.team;
+  }
+}
+
 var eventHandler = function(triggerEvent) {
   var eventType = triggerEvent.type;
   console.log("event: ", eventType);
@@ -100,7 +126,7 @@ function registerUser(triggerEvent, eventEmmiter) {
   nearbyHappenings.forEach(function(happening) {
     happening.target = {
       type: 'user',
-      identifier: userId
+      identifier: userTeam
     };
   });
   eventEmmiter(nearbyHappenings[0]);
@@ -126,6 +152,12 @@ var areaToClaim = getFirstByKey(areas, 'id', triggerEvent.data.areaId);
       identifier: teamClaiming
     };
     eventEmmiter(offer);
+    var retakeEvent = getFirstByKey(happenings, 'name', 'starbucksRetake');
+    retakeEvent.target = {
+      type: 'team',
+      identifier: getFirstOppositeTeam(teamClaiming)
+    };
+    eventEmmiter(retakeEvent);
   } else {
     eventEmmiter(triggerEvent);
   }
@@ -136,9 +168,8 @@ function offerRedemptionEvent(triggerEvent, eventEmmiter) {
     var eventResponse = getFirstByKey(offers, 'name', 'drone');
     eventResponse.target = {
       type: 'user',
-      identifier: triggerEvent.data.userId
+      identifier: triggerEvent.data.team
     };
-    // console.log(triggerEvent);
       eventEmmiter(getFirstByKey(offers, 'name', 'drone'));
   }
 }
@@ -186,5 +217,6 @@ function setEmmiter(newEventEmmiter) {
 module.exports = {
   setEmmiter: setEmmiter,
   eventHandler: eventHandler,
-  getOfflineUsers: getOfflineUsers
+  getOfflineUsers: getOfflineUsers,
+  checkTarget: checkTarget
 }
